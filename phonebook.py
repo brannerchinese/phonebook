@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # phonebook.py
 # David Prager Branner
-# 20140620
+# 20140620, works
 
 """Create simple command-line phonebook application."""
 
@@ -75,8 +75,7 @@ def add(args, connection):
                 format(args[1]))
     # Report results.
     else:
-        print('Added name {} and number {}.'.
-                format(args[1], args[2]))
+        print('Added name "{}" with number {}.'.format(args[1], args[2]))
 
 def change(args, connection):
     # Attempt to update args[2] as numb for args[1] as name.
@@ -86,7 +85,7 @@ def change(args, connection):
     # Catch error if args[1] does not exist.
     except sqlite3.Error as e:
         print('Unexpected SQLite3 error:\n{}'.format(e))
-    print('Results for name {} follow:'.format(args[1]))
+    print('Result of change:', end=' ')
     # Report results by calling lookup. (This is rough; can be improved later.)
     # Advantage for now: we'll learn if there was no such name.
     lookup(args, connection, substring=False)
@@ -98,7 +97,7 @@ def remove(args, connection):
     # Catch error if args[1] does not exist.
     except sqlite3.Error as e:
         print('Unexpected SQLite3 error:\n{}'.format(e))
-    print('Results for name {} follow:'.format(args[1]))
+    print('Result of removal:', end=' ')
     # Report results by calling lookup. (This is rough; can be improved later.)
     # Advantage for now: we'll learn if there was no such name.
     lookup(args, connection, substring=False)
