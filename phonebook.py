@@ -11,7 +11,8 @@ import sqlite3
 
 def main(args):
     command = args[0]
-    if args[-1].split('.') == 'pb':
+    print(args[-1])
+    if args[-1].split('.')[-1] == 'pb':
         database = args[-1]
     else:
         database = 'hsphonebook.pb'
