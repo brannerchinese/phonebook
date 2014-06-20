@@ -1,10 +1,37 @@
 ## Phonebook
 
-Construct a command-line phonebook tool; timed exercise.
+Construct a command-line phonebook tool; timed exercise. This was the result of a timed exercise at [Hacker School](http://hackerschool.com); the spec is posted [here](https://hackpad.com/Manage-those-phone-books-wK1MycZ5ATb) and the version submitted within the timed window is tagged [as_submitted](https://github.com/brannerchinese/phonebook/tree/as_submitted).
 
 ### To install and use
 
-[Pending.]
+Clone and run with Python 3. This program uses SQLite3 on the back end.
+
+At the command line:
+
+```
+# Create database.
+./phonebook.py create hsphonebook.pb
+
+# Create unique entry "name" with number 99999.
+./phonebook.py add 'name' '99999'
+
+# Look up names containing 'name' as substring and return 
+# all entries found.
+./phonebook.py lookup 'name'
+
+# Change the number associated with an existing name.
+./phonebook.py change 'name' '3456'
+
+# Delete an entry.
+./phonebook.py remove 'name'
+
+# Look up names matching 'number' as substring.
+./phonebook.py reverse '34'
+./phonebook.py reverse-lookup '34'
+
+```
+
+The database name can be supplied after any other arguments, but in its absence, `hsphonebook.pb` is assumed to be the database.
 
 ### Old versions
 
@@ -18,5 +45,8 @@ Construct a command-line phonebook tool; timed exercise.
 ### To do
 
  1. Default argument to `lookup` allow control of substring search - for use when calling `lookup` from within `change` we don't want substring search.
+ 1. Normalize data.
+ 1. Test suite.
+
 
 [end]
