@@ -45,8 +45,9 @@ The database name can be supplied after any other arguments, but in its absence,
 
 ### To do
 
- 1. Default argument to `lookup` allow control of substring search - for use when calling `lookup` from within `change` we don't want substring search.
+ 1. Default argument to `lookup` allow control of substring search - for use when calling `lookup` from within `change` or `remove`; we don't want substring search then, only exact search on the exact name we have changed or removed.
  1. Normalize data.
+ 1. Instead of printing to STDOUT, return results to `main`.
  1. Test suite.
  1. Suggestions from people doing code review:
    2. Add `CREATE INDEX` line for database. DPB: At what size database should that be done?
