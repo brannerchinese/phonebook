@@ -6,6 +6,9 @@
 """Create simple command-line phonebook application."""
 
 import sys
+if sys.version_info.major < 3 and sys.version_info.minor < 3:
+    print('At least Python 3.3 is required to run this program.')
+    sys.exit()
 import inspect
 import sqlite3
 
