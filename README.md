@@ -33,7 +33,7 @@ At the command line:
 
 The database name can be supplied after any other arguments, but in its absence, `hsphonebook.pb` is assumed to be the database.
 
-### Old versions
+### Old versions (stored in `old_version` to document progress)
 
  1. `phonebook_01.py`: skeleton code, functions exist and report when they are called.
  1. `phonebook_02.py`: `create` working correctly and reports on creation.
