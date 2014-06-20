@@ -51,5 +51,6 @@ The database name can be supplied after any other arguments, but in its absence,
  1. Test suite.
  1. Suggestions from people doing code review:
    2. Add `CREATE INDEX` line for database. DPB: At what size database should that be done?
+   2. If unknown command, return list of valid commands (can iterate through `commands`).
 
 [end]
