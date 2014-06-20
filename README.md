@@ -35,7 +35,8 @@ The database name can be supplied after any other arguments, but in its absence,
 
 ### Old versions (stored in `old_version` to document progress)
 
- 1. `phonebook_01.py`: skeleton code, functions exist and report when they are called.
+ 1. `phonebook_as_submitted.py`: Version as actually submitted after two hours' work.
+ 1. `phonebook_01.py`: Initial version: skeleton code, functions exist and report when they are called.
  1. `phonebook_02.py`: `create` working correctly and reports on creation.
  1. `phonebook_03.py`: `add` working correctly; reports on adding name or on duplicate name.
  1. `phonebook_04.py`: `lookup` (simple) working correctly; reports all found names (including any substring) or on name not found.
