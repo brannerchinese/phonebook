@@ -40,11 +40,17 @@ def create(args, connection):
         sys.exit()
     return True
 
-def lookup(args, connection):
+def lookup(args, connection, substring=True):
+    # Purpose of substring: to prevent substring search when lookup is called
+    # from within other functions.
+    if substring:
+        name = '%' + args[1] + '%'
+    else:
+        name = args[1]
     # Look up args[1] in records.name.
     try:
         cursor = connection.execute('''SELECT name,numb FROM records '''
-                '''WHERE name LIKE ?''', ('%' + args[1] + '%',))
+                '''WHERE name LIKE ?''', (name,))
     # Catch error if args[1] is not unique.
     except sqlite3.Error as e:
         print('Unexpected SQLite3 error:\n{}'.format(e))
@@ -80,14 +86,22 @@ def change(args, connection):
     # Catch error if args[1] does not exist.
     except sqlite3.Error as e:
         print('Unexpected SQLite3 error:\n{}'.format(e))
+    print('Results for name {} follow:'.format(args[1]))
     # Report results by calling lookup. (This is rough; can be improved later.)
     # Advantage for now: we'll learn if there was no such name.
-    lookup(args, connection)
+    lookup(args, connection, substring=False)
 
 def remove(args, connection):
-    name_function()
-    # Attempt to remove record for args[1] as name and args[2] as numb.
+    # Attempt to remove record for args[1] as name.
+    try:
+        connection.execute('''DELETE FROM records WHERE name=?''', (args[1],))
     # Catch error if args[1] does not exist.
+    except sqlite3.Error as e:
+        print('Unexpected SQLite3 error:\n{}'.format(e))
+    print('Results for name {} follow:'.format(args[1]))
+    # Report results by calling lookup. (This is rough; can be improved later.)
+    # Advantage for now: we'll learn if there was no such name.
+    lookup(args, connection, substring=False)
 
 def reverse(args, connection):
     # Look up args[1] in records.num.
